@@ -1,3 +1,5 @@
 # Advent of Code 2020
 
-Day 1: Swift
+| Day   |      Language      |  Stars |
+|----------|-------------|------|
+| 1 |  Swift | 🌟🌟 |
