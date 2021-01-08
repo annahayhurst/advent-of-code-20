@@ -4,4 +4,15 @@ enum class Instruction {
 }
 
 // Data class representing an instruction and the value it holds (positive or negative)
-data class OpCode(val instruction: Instruction, val value: Int)
+data class OpCode(var instruction: Instruction, var value: Int) {
+
+    fun swapInstruction() {
+        when(instruction) {
+            Instruction.NOP -> instruction = Instruction.JMP
+            Instruction.JMP -> instruction = Instruction.NOP
+            else -> { }
+        }
+    }
+
+    override fun toString(): String = "${instruction.name} $value"
+}

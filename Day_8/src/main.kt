@@ -8,9 +8,15 @@ fun main() {
 
     val bootCode: List<OpCode> = generateBootCode(allLines)
 
-    // Part 1
-    val accumulatorValue = Simulator.simulateFirstLoopOf(bootCode)
-    println("Part 1: $accumulatorValue ✨")
+    // Part 1 -> 1548
+    val singleLoopAccumulatorValue = Simulator.simulate(bootCode).accumulator
+    println("Part 1: $singleLoopAccumulatorValue ✨")
+
+    // Part 2 -> 1375
+    // "[Simulator] Fixed instruction at index 226: changed JMP -159 to NOP -159"
+    val fixedBootCode = Simulator.fix(bootCode)
+    val fullAccumulatorValue = Simulator.simulate(fixedBootCode).accumulator
+    println("Part 2: $fullAccumulatorValue ✨")
 }
 
 fun generateBootCode(input: List<String>): List<OpCode> {
@@ -20,9 +26,8 @@ fun generateBootCode(input: List<String>): List<OpCode> {
 
         // e.g. convert acc -> ACC, retrieve enum value
         val instruction = Instruction.valueOf(components[0].toUpperCase())
-        // Remove + from beginning of value if it exists, convert to number
-        val valueAsString = components[1]
-        val value = if (valueAsString[0] == '+') valueAsString.drop(1).toInt() else valueAsString.toInt()
+        // Convert value to int
+        val value = components[1].toInt()
 
         output.add(OpCode(instruction, value))
     }
