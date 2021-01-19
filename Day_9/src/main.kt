@@ -15,6 +15,13 @@ fun main() {
 
     val cypher: XmasCypher = XmasCypher(preamble, code)
 
-    var firstInvalidValue = cypher.findVulnerability()
-    println("Part 1: First invalid value for this preamble is $firstInvalidValue ✨") // -> 542529149
+    // Part 1
+    var vulnerability = cypher.vulnerability
+    println("Part 1: First invalid value for this code is ${vulnerability.value} at index ${vulnerability.index} ✨") // -> 542529149
+
+    // Part 2
+    var weakValues = cypher.listOfWeakValues
+    var encryptionWeakness = cypher.encryptionWeakness
+    println("Part 2: The set of values that add up to the vulnerable value are: $weakValues") // -> [An array of very big numbers!]
+    println("Therefore, the encryption weakness is: $encryptionWeakness 🎉") // -> 75678618
 }
