@@ -3,3 +3,16 @@
 out/
 .idea/
 .swiftpm
+
+# sbt
+bin/
+project/
+target/
+build/
+.bsp/
+
+# scala
+.history
+.scala_dependencies
+.cache
+.cache-main
